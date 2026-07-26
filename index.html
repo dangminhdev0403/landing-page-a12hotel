@@ -55,7 +55,7 @@
         cursor: pointer;
       }
       .container {
-        width: min(1180px, calc(100% - 40px));
+        width: min(1240px, calc(100% - 48px));
         margin-inline: auto;
       }
       .eyebrow {
@@ -281,7 +281,7 @@
         inset: 0;
       }
       .hero-bg {
-        background: url("images/luxury_hotel_lobby_and_exterior_modern_architectural_design_evening_lightin.png")
+        background: url("images/Toàn cảnh bên ngoài.jpg")
           center/cover no-repeat;
         transform: scale(1.015);
         animation: hero-breathe 22s ease-in-out infinite alternate;
@@ -767,7 +767,7 @@
             rgba(11, 23, 38, 0.96),
             rgba(11, 23, 38, 0.77)
           ),
-          url("luxury_hotel_lobby_and_exterior_modern_architectural_design_evening_lightin.png")
+          url("images/toàn cảnh.jpg")
             center 58% / cover;
       }
       .cta-wrap {
@@ -1136,6 +1136,197 @@
           margin-top: 8px;
         }
       }
+
+      /* Room Sub-Gallery Badges */
+      .room-sub-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 10px 0 14px;
+      }
+      .sub-thumb {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.76rem;
+        font-weight: 600;
+        color: #8b6214;
+        background: #fdf8ed;
+        border: 1px solid #f0dfb6;
+        padding: 4px 10px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .sub-thumb:hover {
+        background: #d8af5d;
+        color: #132236;
+        border-color: #d8af5d;
+      }
+
+      /* Gallery Section */
+      .gallery-section {
+        padding: 100px 0;
+        background: var(--paper);
+      }
+      .gallery-filter {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 40px;
+      }
+      .filter-btn {
+        padding: 10px 24px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+        color: var(--ink);
+        font-size: 0.9rem;
+        font-weight: 700;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      }
+      .filter-btn.active,
+      .filter-btn:hover {
+        background: var(--ink);
+        color: var(--gold-light);
+        border-color: var(--ink);
+        box-shadow: 0 6px 18px rgba(11, 23, 38, 0.2);
+        transform: translateY(-2px);
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+      .gallery-item {
+        position: relative;
+        min-height: 250px;
+        border-radius: 14px;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+        transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+      }
+      .gallery-item:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 40px rgba(11, 23, 38, 0.22);
+      }
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.65s ease;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.08);
+      }
+      /* Bento Featured Spans when viewing All */
+      .gallery-grid.is-all .gallery-item-feat-tall {
+        grid-row: span 2;
+        min-height: 522px;
+      }
+      .gallery-grid.is-all .gallery-item-feat-wide {
+        grid-column: span 2;
+        min-height: 250px;
+      }
+      .gallery-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(0deg, rgba(11, 23, 38, 0.88) 0%, rgba(11, 23, 38, 0.2) 50%, transparent 100%);
+        opacity: 0;
+        display: flex;
+        align-items: flex-end;
+        padding: 20px;
+        color: white;
+        transition: opacity 0.35s ease;
+      }
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+      .gallery-overlay span {
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        color: var(--gold-light);
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      }
+      @media (max-width: 960px) {
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .gallery-grid.is-all .gallery-item-feat-tall,
+        .gallery-grid.is-all .gallery-item-feat-wide {
+          grid-row: auto;
+          grid-column: auto;
+          min-height: 240px;
+        }
+      }
+      @media (max-width: 640px) {
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+        .gallery-item {
+          min-height: 220px;
+        }
+      }
+
+      /* Lightbox Modal */
+      .lightbox-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        background: rgba(6, 15, 26, 0.95);
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+      .lightbox-modal.is-open {
+        opacity: 1;
+        visibility: visible;
+      }
+      .lightbox-content {
+        max-width: 90vw;
+        max-height: 80vh;
+        border-radius: 8px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        object-fit: contain;
+      }
+      .lightbox-caption {
+        margin-top: 16px;
+        color: var(--gold-light);
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-align: center;
+      }
+      .lightbox-close {
+        position: absolute;
+        top: 24px;
+        right: 28px;
+        background: rgba(255,255,255,0.15);
+        border: none;
+        color: white;
+        font-size: 1.8rem;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .lightbox-close:hover {
+        background: rgba(255,255,255,0.3);
+      }
     </style>
   </head>
   <body>
@@ -1149,7 +1340,8 @@
         </a>
         <div class="nav-links" id="navLinks">
           <a href="#about">Về chúng tôi</a><a href="#rooms">Phòng nghỉ</a
-          ><a href="#experience">Trải nghiệm</a><a href="#contact">Liên hệ</a>
+          ><a href="#gallery">Hình ảnh</a><a href="#experience">Trải nghiệm</a
+          ><a href="#contact">Liên hệ</a>
         </div>
         <a class="nav-cta" href="tel:0966643456">Gọi đặt phòng</a>
         <button
@@ -1213,8 +1405,10 @@
           >
             <img
               class="image-main"
-              src="images/luxury_hotel_lobby_and_exterior_modern_architectural_design_evening_lightin.png"
+              src="images/sảnh tầng 1.jpg"
               alt="Sảnh đón khách sang trọng tại A21 Hotel"
+              onclick="openLightbox('images/sảnh tầng 1.jpg', 'Sảnh đón khách tầng 1')"
+              style="cursor: pointer;"
             />
             <div class="image-note">
               <strong>24/7</strong
@@ -1297,21 +1491,23 @@
               data-aos="fade-up"
               data-aos-duration="850"
             >
-              <div class="room-image">
+              <div class="room-image" onclick="openLightbox('images/Phòng đơn.jpg', 'Phòng Đơn - A21 Hotel')" style="cursor: pointer;">
                 <img
-                  src="images/room_superior.jpg"
-                  alt="Phòng Superior của A21 Hotel"
-                /><span class="room-tag room-tag-1"><span>✦</span> THOẢI MÁI</span>
+                  src="images/Phòng đơn.jpg"
+                  alt="Phòng Đơn của A21 Hotel"
+                /><span class="room-tag room-tag-1"><span>✦</span> TIÊU CHUẨN</span>
               </div>
               <div class="room-body">
-                <h3>Superior</h3>
+                <h3>Phòng Đơn</h3>
                 <p>
-                  Không gian tinh gọn, cửa sổ thoáng và mọi tiện nghi thiết yếu
-                  cho kỳ lưu trú trọn vẹn.
+                  Không gian ấm cúng, tinh gọn với đầy đủ tiện nghi hiện đại, phù hợp cho cá nhân hoặc khách đi công tác.
                 </p>
+                <div class="room-sub-gallery">
+                  <button type="button" class="sub-thumb" onclick="openLightbox('images/Phòng đơn nhìn từ cửa vào.jpg', 'Phòng Đơn - Góc nhìn từ cửa vào')">📷 Xem từ cửa vào</button>
+                </div>
                 <div class="room-footer">
                   <div class="room-price">
-                    Giá từ<strong>800.000đ / đêm</strong>
+                    Giá chỉ<strong>400.000 VNĐ / đêm</strong>
                   </div>
                   <a class="mini-link" href="tel:0966643456">Đặt phòng →</a>
                 </div>
@@ -1323,21 +1519,23 @@
               data-aos-duration="850"
               data-aos-delay="120"
             >
-              <div class="room-image">
+              <div class="room-image" role="button" tabindex="0" onclick="openLightbox('images/Phòng đôi.jpg', 'Phòng Đôi - A21 Hotel')" onkeydown="if(event.key==='Enter'||event.key===' ') openLightbox('images/Phòng đôi.jpg', 'Phòng Đôi - A21 Hotel')" style="cursor: pointer;">
                 <img
-                  src="images/room_deluxe.jpg"
-                  alt="Phòng Deluxe View Phố của A21 Hotel"
+                  src="images/Phòng đôi.jpg"
+                  alt="Phòng Đôi của A21 Hotel"
                 /><span class="room-tag room-tag-2"><span>★</span> ĐƯỢC YÊU THÍCH</span>
               </div>
               <div class="room-body">
-                <h3>Deluxe View Phố</h3>
+                <h3>Phòng Đôi</h3>
                 <p>
-                  Rộng rãi hơn với góc nhìn thoáng đãng, lý tưởng để chậm lại
-                  giữa nhịp sống thành phố.
+                  Rộng rãi và thoáng mát với giường đôi êm ái, lý tưởng cho các cặp đôi hoặc chuyến du lịch hai người.
                 </p>
+                <div class="room-sub-gallery">
+                  <button type="button" class="sub-thumb" onclick="openLightbox('images/phòng  đôi.jpg', 'Phòng Đôi - Góc chụp đẹp')">📷 Xem góc toàn cảnh</button>
+                </div>
                 <div class="room-footer">
                   <div class="room-price">
-                    Giá từ<strong>1.200.000đ / đêm</strong>
+                    Giá chỉ<strong>500.000 VNĐ / đêm</strong>
                   </div>
                   <a class="mini-link" href="tel:0966643456">Đặt phòng →</a>
                 </div>
@@ -1349,26 +1547,90 @@
               data-aos-duration="850"
               data-aos-delay="240"
             >
-              <div class="room-image">
+              <div class="room-image" role="button" tabindex="0" onclick="openLightbox('images/phòng  VIP.jpg', 'Phòng VIP - A21 Hotel')" onkeydown="if(event.key==='Enter'||event.key===' ') openLightbox('images/phòng  VIP.jpg', 'Phòng VIP - A21 Hotel')" style="cursor: pointer;">
                 <img
-                  src="images/room_suite.jpg"
-                  alt="Phòng Suite hạng sang của A21 Hotel"
+                  src="images/phòng  VIP.jpg"
+                  alt="Phòng VIP sang trọng của A21 Hotel"
                 /><span class="room-tag room-tag-3"><span>👑</span> ĐẶC QUYỀN VIP</span>
               </div>
               <div class="room-body">
-                <h3>Suite Hạng Sang</h3>
+                <h3>Phòng VIP</h3>
                 <p>
-                  Không gian lưu trú cao cấp với trải nghiệm riêng tư và những
-                  tiện nghi được chọn lựa kỹ lưỡng.
+                  Không gian lưu trú cao cấp nhất với phòng khách riêng biệt, nội thất hiện đại và phòng tắm sang trọng.
                 </p>
+                <div class="room-sub-gallery">
+                  <button type="button" class="sub-thumb" onclick="openLightbox('images/phòng khách của phòng VIP.jpg', 'Phòng VIP - Phòng khách riêng')">🛋️ Phòng khách</button>
+                  <button type="button" class="sub-thumb" onclick="openLightbox('images/Toalet phòng VIP.jpg', 'Phòng VIP - Phòng tắm VIP')">🚿 Phòng tắm VIP</button>
+                </div>
                 <div class="room-footer">
                   <div class="room-price">
-                    Giá từ<strong>2.500.000đ / đêm</strong>
+                    Giá chỉ<strong>800.000 VNĐ / đêm</strong>
                   </div>
                   <a class="mini-link" href="tel:0966643456">Đặt phòng →</a>
                 </div>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery-section" id="gallery">
+        <div class="container">
+          <div class="quote-wrap" data-aos="fade-up" style="margin-bottom: 30px;">
+            <div class="eyebrow" style="justify-content: center;">THƯ VIỆN HÌNH ẢNH</div>
+            <h2 class="section-title" style="text-align: center;">Khám phá không gian A21 Hotel</h2>
+            <p class="section-copy" style="margin-inline: auto; text-align: center;">
+              Hình ảnh thực tế sắc nét từng khu vực sảnh, quầy bar và không gian các hạng phòng nghỉ.
+            </p>
+          </div>
+          <div class="gallery-filter" data-aos="fade-up" data-aos-delay="100">
+            <button class="filter-btn active" onclick="filterGallery('all', this)">Tất cả</button>
+            <button class="filter-btn" onclick="filterGallery('sanh', this)">Sảnh & Quầy Bar</button>
+            <button class="filter-btn" onclick="filterGallery('don', this)">Phòng Đơn</button>
+            <button class="filter-btn" onclick="filterGallery('doi', this)">Phòng Đôi</button>
+            <button class="filter-btn" onclick="filterGallery('vip', this)">Phòng VIP</button>
+          </div>
+          <div class="gallery-grid is-all" data-aos="fade-up" data-aos-delay="200">
+            <div class="gallery-item gallery-item-feat-tall" role="button" tabindex="0" data-category="sanh" onclick="openLightbox('images/Toàn cảnh bên ngoài.jpg', 'Toàn cảnh bên ngoài A21 Hotel')" onkeydown="if(event.key==='Enter'||event.key===' ') openLightbox('images/Toàn cảnh bên ngoài.jpg', 'Toàn cảnh bên ngoài A21 Hotel')">
+              <img src="images/Toàn cảnh bên ngoài.jpg" alt="Toàn cảnh bên ngoài A21 Hotel" loading="lazy" />
+              <div class="gallery-overlay"><span>Toàn cảnh bên ngoài</span></div>
+            </div>
+            <div class="gallery-item" role="button" tabindex="0" data-category="sanh" onclick="openLightbox('images/sảnh tầng 1.jpg', 'Sảnh đón khách tầng 1')" onkeydown="if(event.key==='Enter'||event.key===' ') openLightbox('images/sảnh tầng 1.jpg', 'Sảnh đón khách tầng 1')">
+              <img src="images/sảnh tầng 1.jpg" alt="Sảnh đón khách tầng 1" loading="lazy" />
+              <div class="gallery-overlay"><span>Sảnh đón khách tầng 1</span></div>
+            </div>
+            <div class="gallery-item" role="button" tabindex="0" data-category="sanh" onclick="openLightbox('images/quầy ba.jpg', 'Quầy Bar & Lễ tân')" onkeydown="if(event.key==='Enter'||event.key===' ') openLightbox('images/quầy ba.jpg', 'Quầy Bar & Lễ tân')">
+              <img src="images/quầy ba.jpg" alt="Quầy Bar A21 Hotel" loading="lazy" />
+              <div class="gallery-overlay"><span>Quầy Bar & Lễ tân</span></div>
+            </div>
+            <div class="gallery-item" role="button" tabindex="0" data-category="don" onclick="openLightbox('images/Phòng đơn.jpg', 'Phòng Đơn - Ấm cúng & Tinh tế')" onkeydown="if(event.key==='Enter'||event.key===' ') openLightbox('images/Phòng đơn.jpg', 'Phòng Đơn - Ấm cúng & Tinh tế')">
+              <img src="images/Phòng đơn.jpg" alt="Phòng Đơn A21 Hotel" loading="lazy" />
+              <div class="gallery-overlay"><span>Phòng Đơn</span></div>
+            </div>
+            <div class="gallery-item" role="button" tabindex="0" data-category="don" onclick="openLightbox('images/Phòng đơn nhìn từ cửa vào.jpg', 'Phòng Đơn - Góc nhìn từ cửa vào')" onkeydown="if(event.key==='Enter'||event.key===' ') openLightbox('images/Phòng đơn nhìn từ cửa vào.jpg', 'Phòng Đơn - Góc nhìn từ cửa vào')">
+              <img src="images/Phòng đơn nhìn từ cửa vào.jpg" alt="Phòng Đơn nhìn từ cửa vào" loading="lazy" />
+              <div class="gallery-overlay"><span>Phòng Đơn (Cửa vào)</span></div>
+            </div>
+            <div class="gallery-item" role="button" tabindex="0" data-category="doi" onclick="openLightbox('images/Phòng đôi.jpg', 'Phòng Đôi - Giường đôi hiện đại')" onkeydown="if(event.key==='Enter'||event.key===' ') openLightbox('images/Phòng đôi.jpg', 'Phòng Đôi - Giường đôi hiện đại')">
+              <img src="images/Phòng đôi.jpg" alt="Phòng Đôi A21 Hotel" loading="lazy" />
+              <div class="gallery-overlay"><span>Phòng Đôi</span></div>
+            </div>
+            <div class="gallery-item" role="button" tabindex="0" data-category="doi" onclick="openLightbox('images/phòng  đôi.jpg', 'Phòng Đôi - Không gian thoáng đãng')" onkeydown="if(event.key==='Enter'||event.key===' ') openLightbox('images/phòng  đôi.jpg', 'Phòng Đôi - Không gian thoáng đãng')">
+              <img src="images/phòng  đôi.jpg" alt="Phòng Đôi không gian thoáng" loading="lazy" />
+              <div class="gallery-overlay"><span>Phòng Đôi (Góc rộng)</span></div>
+            </div>
+            <div class="gallery-item" role="button" tabindex="0" data-category="vip" onclick="openLightbox('images/phòng  VIP.jpg', 'Phòng VIP - Sang trọng hàng đầu')" onkeydown="if(event.key==='Enter'||event.key===' ') openLightbox('images/phòng  VIP.jpg', 'Phòng VIP - Sang trọng hàng đầu')">
+              <img src="images/phòng  VIP.jpg" alt="Phòng VIP A21 Hotel" loading="lazy" />
+              <div class="gallery-overlay"><span>Phòng VIP</span></div>
+            </div>
+            <div class="gallery-item gallery-item-feat-wide" role="button" tabindex="0" data-category="vip" onclick="openLightbox('images/phòng khách của phòng VIP.jpg', 'Phòng VIP - Phòng khách riêng biệt')" onkeydown="if(event.key==='Enter'||event.key===' ') openLightbox('images/phòng khách của phòng VIP.jpg', 'Phòng VIP - Phòng khách riêng biệt')">
+              <img src="images/phòng khách của phòng VIP.jpg" alt="Phòng khách của phòng VIP" loading="lazy" />
+              <div class="gallery-overlay"><span>Phòng VIP (Phòng khách)</span></div>
+            </div>
+            <div class="gallery-item" role="button" tabindex="0" data-category="vip" onclick="openLightbox('images/Toalet phòng VIP.jpg', 'Phòng VIP - Phòng tắm & Toalet hiện đại')" onkeydown="if(event.key==='Enter'||event.key===' ') openLightbox('images/Toalet phòng VIP.jpg', 'Phòng VIP - Phòng tắm & Toalet hiện đại')">
+              <img src="images/Toalet phòng VIP.jpg" alt="Toalet phòng VIP" loading="lazy" />
+              <div class="gallery-overlay"><span>Phòng VIP (Phòng tắm)</span></div>
+            </div>
           </div>
         </div>
       </section>
@@ -1471,8 +1733,8 @@
           </div>
           <div class="footer-col">
             <h3>Liên hệ</h3>
-            <a href="tel:0966643456">0966 643 456</a
-            ><a href="mailto:hello@a21hotel.vn">hello@a21hotel.vn</a>
+            <a href="tel:0966643456">📞 0966 643 456</a>
+            <a href="mailto:a21hotel@gmail.com">✉️ a21hotel@gmail.com</a>
           </div>
           <div class="footer-col">
             <h3>Địa chỉ</h3>
@@ -1578,6 +1840,50 @@
           offset: 90,
           disable: () => matchMedia("(prefers-reduced-motion: reduce)").matches,
         });
+
+      // Lightbox Modal Functions
+      function openLightbox(src, title) {
+        const modal = document.getElementById('lightboxModal');
+        const img = document.getElementById('lightboxImg');
+        const cap = document.getElementById('lightboxCap');
+        if (modal && img) {
+          img.src = src;
+          if (cap) cap.textContent = title || '';
+          modal.classList.add('is-open');
+        }
+      }
+      function closeLightbox() {
+        const modal = document.getElementById('lightboxModal');
+        if (modal) modal.classList.remove('is-open');
+      }
+      function filterGallery(category, btn) {
+        const grid = document.querySelector('.gallery-grid');
+        if (btn) {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+        }
+        if (grid) {
+          if (category === 'all') {
+            grid.classList.add('is-all');
+          } else {
+            grid.classList.remove('is-all');
+          }
+        }
+        document.querySelectorAll('.gallery-item').forEach(item => {
+          if (category === 'all' || item.dataset.category === category) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      }
     </script>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal" onclick="if(event.target === this) closeLightbox()">
+      <button class="lightbox-close" onclick="closeLightbox()" aria-label="Đóng">✕</button>
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" alt="Zoom preview" class="lightbox-content" id="lightboxImg" />
+      <div class="lightbox-caption" id="lightboxCap"></div>
+    </div>
   </body>
 </html>
